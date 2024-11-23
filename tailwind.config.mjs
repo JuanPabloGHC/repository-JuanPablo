@@ -7,7 +7,10 @@ export default {
 				'primary': '#0E7490',
 				'secondary': '#14B8A6',
 				'tertiary': '#E7F8F6',
-			}
+			},
+			fontFamily: {
+				'narrow': ['Narrow', 'sans-serif'],
+			},
 		},
 	},
 	plugins: [],

@@ -11,7 +11,7 @@ const { title, description, image, keywords, range } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <Metadata
       title={title}
@@ -42,37 +42,6 @@ const { title, description, image, keywords, range } = Astro.props;
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
-  }
-
-  @font-face {
-    font-display: swap;
-    font-family: "Narrow";
-    src: url("/fonts/narrow/ArchivoNarrow-VariableFont_wght.ttf")
-      format("truetype");
-    font-style: normal;
-  }
-
-  @font-face {
-    font-display: swap;
-    font-family: "Narrow";
-    src: url("/fonts/narrow/ArchivoNarrow-Italic-VariableFont_wght.ttf")
-      format("truetype");
-    font-style: italic;
-  }
-
-  @font-face {
-    font-display: swap;
-    font-family: "Inter";
-    src: url("/fonts/inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
-    font-style: normal;
-  }
-
-  @font-face {
-    font-display: swap;
-    font-family: "Inter";
-    src: url("/fonts/inter/Inter-Italic-VariableFont_opsz,wght.ttf")
-      format("truetype");
-    font-style: italic;
   }
 
   * {

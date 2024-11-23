@@ -5,7 +5,7 @@ export const baseKeywords = [
 ]
 
 export const indexInfo: MetaInfo = {
-    title: "Portafolio de Juan Pablo",
-    description:
-      "Portafolio que destaca a Juan Pablo, Ingeniero en Sistemas Computacionales, sus proyectos, habilidades, tecnologías y experiencia laboral.",
+    title: "Juan Pablo Gómez Haro Cabrera's Portfolio",
+    description:      
+      "A showcase of Juan Pablo's work, highlighting his projects, skills, technologies, and professional experience as a Computer Systems Engineer.",
 }
