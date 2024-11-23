@@ -1,0 +1,96 @@
+---
+import { Icon } from 'astro-icon/components'
+import type { Experience } from 'types/experience'
+
+interface Props {
+    experience: Experience
+}
+
+const { experience } = Astro.props
+
+const calculateTime = (dateStart: Date, dateEnd: Date): string => {
+
+    let years = 0;
+    let months = 0;  
+    let time = "";
+
+    if(dateStart.getFullYear() < dateEnd.getFullYear()) {
+
+        if (dateStart.getMonth() <= dateEnd.getMonth()) { 
+            years = dateEnd.getFullYear() - dateStart.getFullYear()
+            time += `${years} year${years > 1 ? "s" : ""}`
+
+            if (dateStart.getMonth() < dateEnd.getMonth()) {
+                months = dateEnd.getMonth() - dateStart.getMonth();
+
+                time += ` and ${months} month${months > 1 ? "s" : ""}`
+            }
+            else if(dateStart.getMonth() > dateEnd.getMonth()) {
+                months = (12 - dateStart.getMonth()) + dateEnd.getMonth();
+                
+                time += ` and ${months} month${months > 1 ? "s" : ""}`
+            }
+        }
+        else {
+            months = (12 - dateStart.getMonth()) + dateEnd.getMonth();
+
+            time = `${months} month${months > 1 ? "s" : ""}`
+        }
+
+    }
+    else {
+        months = dateEnd.getMonth() - dateStart.getMonth();
+
+        time = `${months} month${months > 1 ? "s" : ""}`
+    }
+
+    return time;
+
+}
+---
+
+<li class="card flex flex-col px-5 py-2 gap-5 justify-center rounded-lg bg-tertiary">
+
+    <h3 class="text-xl font-bold">
+        {experience.title}
+    </h3>
+
+    <div class="flex items-center gap-5 w-full h-full justify-start">
+        <Icon name="mdi:company" class="w-1/6 md:w-6 h-6 text-secondary" />
+        <p class="text-md text-start w-5/6 md:w-full">
+            {experience.company}
+        </p>
+    </div>
+
+    <div class="flex items-center gap-5 w-full h-full justify-start">
+        <Icon name="mdi:calendar" class="w-1/6 md:w-6 h-6 text-secondary" />
+        <p class="text-md text-start w-5/6 md:w-full">
+            {experience.dateStart.toDateString()} - {experience.current ? "Present" : experience.dateEnd.toDateString()} ({calculateTime(experience.dateStart, experience.dateEnd)})
+        </p>
+    </div>
+
+    <p class="text-md text-justify hyphens-auto">
+        {experience.description}
+    </p>
+
+    <ul class="flex flex-wrap lg:grid lg:grid-cols-3 justify-start gap-5">
+        {
+            experience.aptitudes.map((aptitude) => (
+                <li>                    
+                    <p class="text-sm text-secondary/80 font-bold">
+                        {aptitude}
+                    </p>
+                </li>
+            ))
+        }
+    </ul>
+
+</li>
+
+<style>
+    .card {
+  
+        box-shadow: 0 0 4px 5px rgba(14, 116, 144, 0.1),
+                    0 1px 3px rgba(14, 116, 144, 0.06);
+    }
+</style>

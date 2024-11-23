@@ -1,0 +1,63 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import { baseKeywords } from "data/metaInfo";
+import type { MetaInfo } from "types/metaInfo";
+
+interface Props extends MetaInfo {}
+
+const {
+  title,
+  description,
+  keywords,
+  image = "/images/dioxmin_logo_full.png",
+} = Astro.props;
+
+const keywordsArray = keywords ? [...baseKeywords, ...keywords] : baseKeywords;
+---
+
+<title>{title}</title>
+
+<!-- <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} /> -->
+
+<link
+  rel="preload"
+  href="/fonts/narrow/ArchivoNarrow-VariableFont_wght.ttf"
+  as="font"
+  type="font/ttf"
+/>
+
+<meta charset="utf-8" />
+<meta name="generator" content={Astro.generator} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<meta name="description" content={description} />
+<meta name="author" content="Juan Pablo" />
+<meta name="keywords" content={keywordsArray.join(", ")} />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="theme-color" content="#004C97" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<link rel="manifest" href="/manifest.webmanifest" />
+
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="" />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:site_name" content="Juan Pablo" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="es" />
+
+<meta name="msapplication-config" content="/browserconfig.xml" />
+
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+
+<ViewTransitions />

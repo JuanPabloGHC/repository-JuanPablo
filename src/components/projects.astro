@@ -1,0 +1,24 @@
+---
+import { projects } from "data/projects"
+import ProjectCard from "components/projectCard.astro"
+---
+
+<section id="projects" class="w-full flex flex-col px-5 md:px-10 lg:px-20">
+
+    <div class="flex gap-5 items-center">
+        <span class="w-2 h-2 rounded-full bg-secondary md:w-4 md:h-4"></span>
+
+        <h3 class="text-lg md:text-2xl font-bold">
+            Projects
+        </h3>
+    </div>
+    
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-5 mt-5 justify-center items-center">
+        {
+            projects.map((project) => (
+                <ProjectCard project={project} />
+            ))
+        }
+    </ul>
+
+</section>

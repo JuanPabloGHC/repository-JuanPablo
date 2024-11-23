@@ -1,0 +1,53 @@
+---
+import { Icon } from "astro-icon/components";
+import NabvarLink from "./NavbarLink.astro";
+import type { Link } from "types/link";
+
+const links: Link[] = [
+  {
+    name: "About",
+    url: "#about",
+  },
+  {
+    name: "Projects",
+    url: "#projects",
+  },
+  {
+    name: "Experience",
+    url: "#experience",
+  },
+];
+---
+
+<nav class="flex flex-row justify-end items-center md:pe-2 w-full">
+  <ul
+    id="links"
+    class="hidden
+      absolute top-16 right-0 z-10 w-1/2 sm:w-2/5 px-2 py-1 flex-col bg-white shadow-md rounded-md gap-1
+      md:flex-1 md:static md:flex md:flex-row md:justify-end md:gap-5 md:p-0 md:bg-transparent md:shadow-none"
+  >
+    {
+      links.map((link) => (
+        <NabvarLink
+          href={link.url}
+          isSelected={Astro.url.pathname === link.url}
+        >
+          {link.name}
+        </NabvarLink>
+      ))
+    }
+  </ul>
+
+  <button id="menu" class="block md:hidden" tabindex="0">
+    <Icon name="mdi:menu" class="h-7 w-7" />
+    <Icon name="mdi:close" class="h-7 w-7 hidden" />
+  </button>
+</nav>
+
+<script>
+  import { NavbarMenu } from "lib/menu";
+
+  document.addEventListener("astro:page-load", () => {
+    new NavbarMenu();
+  });
+</script>

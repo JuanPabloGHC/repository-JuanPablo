@@ -1,0 +1,23 @@
+---
+import { indexInfo } from "data/metaInfo";
+// logo https://dioxmin.com.mx/images/logo.png
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  url: "http://localhost:4321",  
+  logo: "",
+  name: "Juan Pablo",
+  description: indexInfo.description,
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+52-22-1352-6458",
+    email: "jpghc552@hotmail.com",
+  },
+};
+---
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(organizationSchema)}
+/>

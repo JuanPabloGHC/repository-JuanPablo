@@ -1,0 +1,81 @@
+---
+import Metadata from "components/SEO/Metadata.astro";
+import Header from "components/Header/Header.astro";
+import type { MetaInfo } from "types/metaInfo";
+
+interface Props extends MetaInfo {
+  range?: number;
+}
+
+const { title, description, image, keywords, range } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <Metadata
+      title={title}
+      description={description}
+      keywords={keywords}
+      image={image}
+    />
+
+    <slot name="richResults" />
+
+    <script
+      src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
+    ></script>
+  </head>
+  <body
+    class="bg-white min-h-[100dvh] flex flex-col justify-between items-center"
+  >
+    <Header range={range} />
+
+    <slot name="main" />
+
+  </body>
+</html>
+
+<style is:global>
+  body {
+    background-image: url("../images/BackgroundRepository.png");
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: "Narrow";
+    src: url("/fonts/narrow/ArchivoNarrow-VariableFont_wght.ttf")
+      format("truetype");
+    font-style: normal;
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: "Narrow";
+    src: url("/fonts/narrow/ArchivoNarrow-Italic-VariableFont_wght.ttf")
+      format("truetype");
+    font-style: italic;
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: "Inter";
+    src: url("/fonts/inter/Inter-VariableFont_opsz,wght.ttf") format("truetype");
+    font-style: normal;
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: "Inter";
+    src: url("/fonts/inter/Inter-Italic-VariableFont_opsz,wght.ttf")
+      format("truetype");
+    font-style: italic;
+  }
+
+  * {
+    font-family: "Inter", sans-serif;
+  }
+</style>

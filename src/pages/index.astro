@@ -1,0 +1,22 @@
+---
+import BaseLayout from "layouts/BaseLayout.astro";
+import OrgSchema from "components/SEO/OrgSchema.astro";
+import { indexInfo } from "data/metaInfo";
+import About from "components/about.astro";
+import Projects from "components/projects.astro";
+import Experience from "components/experience.astro";
+---
+
+<BaseLayout {...indexInfo}>
+  <Fragment slot="richResults">
+    <OrgSchema />
+  </Fragment>
+
+  <main class="w-full mb-24 space-y-28 md:space-y-32 mt-16 md:mt-18" slot="main">	
+    <About />
+
+    <Projects />
+
+    <Experience />
+  </main>
+</BaseLayout>
