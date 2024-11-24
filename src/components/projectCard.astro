@@ -46,6 +46,8 @@ const { project } = Astro.props;
             project.links.map((link) => (
                 <li>
                     <a 
+                        id={`watch it on ${link.url}`}
+                        target="_blank"
                         class="text-sm py-2 px-5 rounded-full bg-primary/10 hover:cursor-pointer hover:text-primary hover:shadow-lg hover:shadow-primary/80 transition duration-300 ease-in-out" 
                         href={link.url}
                     >
