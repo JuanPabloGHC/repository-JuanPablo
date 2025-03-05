@@ -7,7 +7,7 @@ export const experiences: Experience[] = [
         dateStart: new Date(2024, 4, 13),
         dateEnd: new Date(),
         current: true,
-        description: "Development of web apps using .NET, Entity Framework and SQL Server for backend and Angular for frontend, and desktop apps using .NET Framework.",
+        description: "Development of web apps using .NET, Entity Framework and SQL Server for backend and Angular for frontend, desktop apps and windows service using .NET Framework.",
         aptitudes: ["teamwork", "problem-solving", "adaptability", "responsability", "communication"]
     },
     {
