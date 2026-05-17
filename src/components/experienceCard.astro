@@ -65,7 +65,7 @@ const calculateTime = (dateStart: Date, dateEnd: Date): string => {
     <div class="flex items-center gap-5 w-full h-full justify-start">
         <Icon name="mdi:calendar" aria-label="calendar icon" class="w-1/6 md:w-6 h-6 text-secondary" />
         <p class="text-md text-start w-5/6 md:w-full">
-            {experience.dateStart.toDateString()} - {experience.current ? "Present" : experience.dateEnd.toDateString()} ({calculateTime(experience.dateStart, experience.dateEnd)})
+            {experience.dateStart.toDateString()} - {experience.current ? "Present" : experience.dateEnd.toDateString()} ({calculateTime(experience.dateStart, (experience.current ? new Date() : experience.dateEnd))})
         </p>
     </div>
 
