@@ -1,5 +1,6 @@
 import type { Project } from "types/project";
 
+import HealthTrackingAppImage from "images/projects/HealthTrackingAppImage.png";
 import ChatAppImage from "images/projects/ChatAppImage.png";
 import RoomSchedulingSoftwareImage from "images/projects/RoomSchedulingSoftwareImage.png";
 import MusicalEmotionsImage from "images/projects/MusicalEmotionImage.png";
@@ -10,6 +11,18 @@ import GuyWithASwordImage from "images/projects/GuyWithASwordImage.png";
 import ColorChallengeImage from "images/projects/ColorChallengeImage.png";
 
 export const projects: Project[] = [
+    {
+        title: "Health Tracking App",
+        image: HealthTrackingAppImage,
+        description: "A mobile health tracking app that visualizes daily wellness metrics such as steps, calories, heart rate, sleep, and physical data from Health Kits and API-based data sources using ROOK.",
+        technologies: ["react", "language-typescript"],
+        links: [
+            {
+                name: "Code",
+                url: "https://github.com/JuanPabloGHC/HealthTrackingApp"
+            }
+        ]
+    },
     {
         title: "Chat-App",
         image: ChatAppImage,
