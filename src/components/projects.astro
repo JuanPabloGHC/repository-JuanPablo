@@ -35,7 +35,7 @@ const filters: [string, string][] = [
                     aria-pressed={index === 0 ? "true" : "false"}
                     class:list={[
                         "text-sm py-1.5 px-4 rounded-full transition duration-300 ease-in-out hover:shadow-md hover:shadow-primary/40",
-                        index === 0 ? "bg-primary text-white" : "bg-primary/10 text-gray-700",
+                        index === 0 ? "bg-primary text-white" : "bg-primary/10 text-primary",
                     ]}
                 >
                     {label}
@@ -65,7 +65,7 @@ const filters: [string, string][] = [
             button.classList.toggle("bg-primary", on);
             button.classList.toggle("text-white", on);
             button.classList.toggle("bg-primary/10", !on);
-            button.classList.toggle("text-gray-700", !on);
+            button.classList.toggle("text-primary", !on);
         });
     };
 

@@ -13,6 +13,17 @@ const { title, description, image, keywords, range } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      // Apply the saved (or system) theme before paint to avoid a flash.
+      (() => {
+        const stored = localStorage.getItem("theme");
+        const dark = stored
+          ? stored === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.classList.toggle("dark", dark);
+      })();
+    </script>
+
     <Metadata
       title={title}
       description={description}
@@ -24,7 +35,7 @@ const { title, description, image, keywords, range } = Astro.props;
 
   </head>
   <body
-    class="bg-white min-h-[100dvh] flex flex-col justify-between items-center"
+    class="bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-100 min-h-[100dvh] flex flex-col justify-between items-center transition-colors duration-300"
   >
     <Header range={range} />
 
@@ -34,11 +45,23 @@ const { title, description, image, keywords, range } = Astro.props;
 </html>
 
 <style is:global>
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
   body {
     background-image: url("../images/BackgroundRepository.png");
     background-size: cover;
     background-position: center top;
     background-attachment: fixed;
+  }
+
+  html.dark body {
+    background-image: url("../images/BackgroundRepositoryDark.png");
   }
 
   * {
