@@ -1,6 +1,14 @@
 ---
 import { projects } from "data/projects"
+import { categories } from "data/categories"
 import ProjectCard from "components/projectCard.astro"
+
+// "All" first, then each category. Only show categories that at least one project uses.
+const usedCategories = new Set(projects.flatMap((project) => project.categories));
+const filters: [string, string][] = [
+    ["all", "All"],
+    ...Object.entries(categories).filter(([key]) => usedCategories.has(key as any)),
+];
 ---
 
 <section id="projects" class="w-full flex flex-col px-5 md:px-10 lg:px-20">
@@ -12,8 +20,31 @@ import ProjectCard from "components/projectCard.astro"
             Projects
         </h2>
     </div>
-    
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-5 mt-5 justify-center items-center">
+
+    <div
+        id="project-filters"
+        role="group"
+        aria-label="Filter projects by category"
+        class="flex flex-wrap gap-2 mt-5"
+    >
+        {
+            filters.map(([key, label], index) => (
+                <button
+                    type="button"
+                    data-filter={key}
+                    aria-pressed={index === 0 ? "true" : "false"}
+                    class:list={[
+                        "text-sm py-1.5 px-4 rounded-full transition duration-300 ease-in-out hover:shadow-md hover:shadow-primary/40",
+                        index === 0 ? "bg-primary text-white" : "bg-primary/10 text-gray-700",
+                    ]}
+                >
+                    {label}
+                </button>
+            ))
+        }
+    </div>
+
+    <ul id="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-5 mt-5 justify-center items-center">
         {
             projects.map((project) => (
                 <ProjectCard project={project} />
@@ -22,3 +53,34 @@ import ProjectCard from "components/projectCard.astro"
     </ul>
 
 </section>
+
+<script>
+    const buttons = document.querySelectorAll<HTMLButtonElement>("#project-filters [data-filter]");
+    const cards = document.querySelectorAll<HTMLLIElement>("#project-list .project");
+
+    const setActive = (active: HTMLButtonElement) => {
+        buttons.forEach((button) => {
+            const on = button === active;
+            button.setAttribute("aria-pressed", String(on));
+            button.classList.toggle("bg-primary", on);
+            button.classList.toggle("text-white", on);
+            button.classList.toggle("bg-primary/10", !on);
+            button.classList.toggle("text-gray-700", !on);
+        });
+    };
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const filter = button.dataset.filter ?? "all";
+            setActive(button);
+
+            cards.forEach((card) => {
+                const cats = (card.dataset.categories ?? "").split(" ");
+                const show = filter === "all" || cats.includes(filter);
+                // Use inline display so it wins over the card's `flex` utility
+                // (the `hidden` attribute's display:none loses to `.flex`).
+                card.style.display = show ? "" : "none";
+            });
+        });
+    });
+</script>
