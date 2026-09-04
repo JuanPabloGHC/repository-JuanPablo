@@ -44,7 +44,7 @@ const filters: [string, string][] = [
         }
     </div>
 
-    <ul id="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4 gap-5 mt-5 justify-center items-center">
+    <ul id="project-list" class="grid grid-cols-1 md:grid-cols-2 min-[1040px]:grid-cols-3 3xl:grid-cols-4 gap-5 mt-5 justify-center items-center">
         {
             projects.map((project) => (
                 <ProjectCard project={project} />

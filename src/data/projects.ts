@@ -1,5 +1,7 @@
 import type { Project } from "types/project";
 
+import TaskTaskerWebAdminImage from "images/projects/TaskTaskerWebAdminImage.png";
+import TaskTaskerMobileAppImage from "images/projects/TaskTaskerMobileAppImage.png";
 import HealthTrackingAppImage from "images/projects/HealthTrackingAppImage.png";
 import ChatAppImage from "images/projects/ChatAppImage.png";
 import RoomSchedulingSoftwareImage from "images/projects/RoomSchedulingSoftwareImage.png";
@@ -11,6 +13,40 @@ import GuyWithASwordImage from "images/projects/GuyWithASwordImage.png";
 import ColorChallengeImage from "images/projects/ColorChallengeImage.png";
 
 export const projects: Project[] = [
+    {
+        title: "TaskTasker Web Admin",
+        image: TaskTaskerWebAdminImage,
+        description: "Platform administration panel for the TaskTasker household task system, backed by a C# / .NET API. Built with Vite, React and TypeScript to manage the global catalog of tasks, achievements, roles and platform administrators.",
+        categories: ["web"],
+        technologies: ["vite", "react", "typescript", "csharp", "dotnet", "entityframework", "postgresql", "neon"],
+        links: [
+            {
+                name: "GitHub",
+                url: "https://github.com/JuanPabloGHC/TaskTaskerWebAdmin"
+            },
+            {
+                name: "API",
+                url: "https://github.com/JuanPabloGHC/TaskTaskerAPI"
+            }
+        ]
+    },
+    {
+        title: "TaskTasker Mobile App",
+        image: TaskTaskerMobileAppImage,
+        description: "Mobile app of the TaskTasker household task system, backed by a C# / .NET API. Built with Expo, React Native and TypeScript, letting users create households, assign and complete tasks, and earn achievements.",
+        categories: ["mobile"],
+        technologies: ["expo", "reactnative", "typescript", "csharp", "dotnet", "entityframework", "postgresql", "neon"],
+        links: [
+            {
+                name: "GitHub",
+                url: "https://github.com/JuanPabloGHC/TaskTaskerMobileApp"
+            },
+            {
+                name: "API",
+                url: "https://github.com/JuanPabloGHC/TaskTaskerAPI"
+            }
+        ]
+    },
     {
         title: "Health Tracking App",
         image: HealthTrackingAppImage,

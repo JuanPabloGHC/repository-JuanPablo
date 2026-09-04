@@ -11,13 +11,15 @@ interface Props {
 
 const { project } = Astro.props;
 
-// Icon shown next to each link, chosen by its name.
-const linkIcons: Record<string, string> = {
-    github: "mdi:github",
-    demo: "mdi:open-in-new",
-};
+// Icon shown next to each link: GitHub repos by URL, otherwise by name.
+const iconFor = (link: { name: string; url: string }) => {
+    if (link.url.includes("github.com")) return "mdi:github";
 
-const iconFor = (name: string) => linkIcons[name.toLowerCase()] ?? "mdi:link-variant";
+    const name = link.name.toLowerCase();
+    if (name.includes("demo") || name.includes("play")) return "mdi:open-in-new";
+
+    return "mdi:link-variant";
+};
 ---
 
 <li
@@ -33,7 +35,7 @@ const iconFor = (name: string) => linkIcons[name.toLowerCase()] ?? "mdi:link-var
         />
 
         <div class="absolute top-0 left-0 rounded-md w-full h-full bg-primary/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-            <ul class="flex flex-wrap w-full h-full content-center justify-center items-center gap-x-4 gap-y-3 p-4">
+            <ul class="flex flex-wrap w-full h-full content-center justify-center items-center gap-x-2 gap-y-2 p-4">
                 {
                     project.technologies.map((key) => {
                         const tech = technologies[key];
@@ -79,7 +81,7 @@ const iconFor = (name: string) => linkIcons[name.toLowerCase()] ?? "mdi:link-var
                         class="flex items-center gap-1.5 text-sm py-2 px-5 rounded-full bg-primary/10 hover:cursor-pointer hover:text-primary hover:shadow-lg hover:shadow-primary/80 transition duration-300 ease-in-out"
                         href={link.url}
                     >
-                        <Icon name={iconFor(link.name)} class="w-4 h-4" />
+                        <Icon name={iconFor(link)} class="w-4 h-4" />
                         {link.name}
                     </a>
                 </li>
