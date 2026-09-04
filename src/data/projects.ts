@@ -15,10 +15,10 @@ export const projects: Project[] = [
         title: "Health Tracking App",
         image: HealthTrackingAppImage,
         description: "A mobile health tracking app that visualizes daily wellness metrics such as steps, calories, heart rate, sleep, and physical data from Health Kits and API-based data sources using ROOK.",
-        technologies: ["react", "language-typescript"],
+        technologies: ["reactnative", "typescript"],
         links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/JuanPabloGHC/HealthTrackingApp"
             }
         ]
@@ -27,10 +27,10 @@ export const projects: Project[] = [
         title: "Chat-App",
         image: ChatAppImage,
         description: "A MVP desktop chat app inspired by WhatsApp and Telegram. Built with C#, .Net MAUI, Entity Framework and SQL Server, enabling profile updates, one-to-one chats  and chat management features.",
-        technologies: ["language-csharp", "language-xaml"],
+        technologies: ["csharp", "dotnet", "xaml", "entityframework", "sqlserver"],
         links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/JuanPabloGHC/Chat-App"
             }
         ]
@@ -39,10 +39,10 @@ export const projects: Project[] = [
         title: "Room Scheduling Software",
         image: RoomSchedulingSoftwareImage,
         description: "A MVP desktop application to manage gaming venues, allowing users to schedule rooms for activities like PC gaming, consoles and VR. Built with C#, .NET MAUI, Entity Framework and SQL Server.",
-        technologies: ["language-csharp", "language-xaml"],
+        technologies: ["csharp", "dotnet", "xaml", "entityframework", "sqlserver"],
         links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/JuanPabloGHC/Room-Scheduling-Software"
             }
         ]
@@ -51,10 +51,10 @@ export const projects: Project[] = [
         title: "Musical Emotions",
         image: MusicalEmotionsImage,
         description: "Emotion-driven Python application recommending music tailored to your mood. Powered by TensorFlow, OpenCV, OpenAI API and Spotify API, it analyzes emotions and suggests music on Spotify.",
-        technologies: ["language-python"],
-        links: [            
+        technologies: ["python", "tensorflow", "opencv", "openai", "spotify"],
+        links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/C4ncino/Musical_Emotions"
             }
         ]
@@ -63,10 +63,10 @@ export const projects: Project[] = [
         title: "HackStem 4th Edition",
         image: HackStemImage,
         description: "Video game for HackStem 4th Edition designed to raise awareness about environmental issues through gamification. Developed using C# and Unity, aiming to educate kids between 5-12 years old.",
-        technologies: ["language-csharp", "unity"],
+        technologies: ["csharp", "unity"],
         links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/JuanPabloGHC/IBEROHACK"
             }
         ]
@@ -75,10 +75,10 @@ export const projects: Project[] = [
         title: "Chom El Churro",
         image: ChomElChurroImage,
         description: "Chom El Churro video game. Developed with C# and Unity for Windows. The player must practice and improve their skills to survive and fight enemies in order to free the Churrerías.",
-        technologies: ["language-csharp", "unity"],
+        technologies: ["csharp", "unity"],
         links: [
             {
-                name: "Project",
+                name: "Demo",
                 url: "https://fugaxy-studio.itch.io/chom-el-churro"
             }
         ]
@@ -87,10 +87,10 @@ export const projects: Project[] = [
         title: "Versus.py",
         image: CodiconImage,
         description: "Web application to learn Python competing with other people. Developed for Codicon 2024 and using; Frontend: Vite, React and TypeScript. Backend: Python, PostgreSQL and SQLAlchemy.",
-        technologies: ["language-python", "language-typescript", "react", "tailwind"],
+        technologies: ["vite", "react", "typescript", "python", "postgresql", "sqlalchemy"],
         links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/GM-CUBE"
             }
         ]
@@ -99,14 +99,14 @@ export const projects: Project[] = [
         title: "Guy with a sword",
         image: GuyWithASwordImage,
         description: "Survival game with a single map where players focus on increasing their score. The objective is just survive as long as possible and trying to beat your high score. Developed with C# and Unity.",
-        technologies: ["language-csharp", "unity"],
+        technologies: ["csharp", "unity"],
         links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/JuanPabloGHC/PrimerJuego"
             },
             {
-                name: "Project",
+                name: "Demo",
                 url: "https://fugaxy-studio.itch.io/guy-with-a-sword"
             }
         ]
@@ -115,10 +115,10 @@ export const projects: Project[] = [
         title: "Color Challenge",
         image: ColorChallengeImage,
         description: "Mobile video game. The player must change colors to navigate through obstacles, reaching the required score in each level to increase difficulty and is designed for single-player gameplay.",
-        technologies: ["language-csharp", "unity"],
+        technologies: ["csharp", "unity"],
         links: [
             {
-                name: "Code",
+                name: "GitHub",
                 url: "https://github.com/JuanPabloGHC/ColorChallenge"
             }
         ]

@@ -1,7 +1,9 @@
+import type { TechnologyKey } from "data/technologies";
+
 export interface Project {
     image: ImageMetadata
     title: string
     description: string
-    technologies: string[]
-    links: Link[]    
+    technologies: TechnologyKey[]
+    links: Link[]
 }

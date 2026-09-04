@@ -2,6 +2,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import type { Project } from "types/project";
+import { technologies } from "data/technologies";
 
 interface Props {
     project: Project
@@ -9,25 +10,38 @@ interface Props {
 
 const { project } = Astro.props;
 
+// Icon shown next to each link, chosen by its name.
+const linkIcons: Record<string, string> = {
+    github: "mdi:github",
+    demo: "mdi:open-in-new",
+};
+
+const iconFor = (name: string) => linkIcons[name.toLowerCase()] ?? "mdi:link-variant";
 ---
 
 <li class="group card flex flex-col px-5 pb-2 pt-5 gap-2 justify-between rounded-lg bg-white w-full h-full">
-    
+
     <div class="flex w-full relative">
-        <Image 
+        <Image
             class="w-full h-52 object-cover rounded-md"
             src={project.image}
             alt=`${project.title} Project image`
         />
 
-        <div class="absolute top-0 left-0 rounded-md w-full h-full bg-primary/90 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
-            <ul class="flex w-full justify-evenly items-center h-full">
+        <div class="absolute top-0 left-0 rounded-md w-full h-full bg-primary/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out">
+            <ul class="flex flex-wrap w-full h-full content-center justify-center items-center gap-x-4 gap-y-3 p-4">
                 {
-                    project.technologies.map((technology) => (
-                        <li>
-                            <Icon name={`mdi:${technology}`} class="w-12 h-12 3xl:w-16 3xl:h-16 text-white" />                            
-                        </li>
-                    ))
+                    project.technologies.map((key) => {
+                        const tech = technologies[key];
+                        return (
+                            <li class="flex flex-col items-center gap-1 w-16">
+                                <Icon name={tech.icon} class="w-10 h-10 3xl:w-12 3xl:h-12" />
+                                <span class="text-[10px] leading-tight text-center text-black">
+                                    {tech.name}
+                                </span>
+                            </li>
+                        );
+                    })
                 }
             </ul>
         </div>
@@ -45,12 +59,13 @@ const { project } = Astro.props;
         {
             project.links.map((link) => (
                 <li>
-                    <a 
+                    <a
                         id={`watch it on ${link.url}`}
                         target="_blank"
-                        class="text-sm py-2 px-5 rounded-full bg-primary/10 hover:cursor-pointer hover:text-primary hover:shadow-lg hover:shadow-primary/80 transition duration-300 ease-in-out" 
+                        class="flex items-center gap-1.5 text-sm py-2 px-5 rounded-full bg-primary/10 hover:cursor-pointer hover:text-primary hover:shadow-lg hover:shadow-primary/80 transition duration-300 ease-in-out"
                         href={link.url}
                     >
+                        <Icon name={iconFor(link.name)} class="w-4 h-4" />
                         {link.name}
                     </a>
                 </li>
@@ -62,7 +77,7 @@ const { project } = Astro.props;
 
 <style>
     .card {
-  
+
         box-shadow: 0 0 4px 5px rgba(20, 184, 166, 0.1),
                     0 1px 3px rgba(20, 184, 166, 0.06);
     }
